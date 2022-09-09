@@ -28,9 +28,6 @@ class _CalculatorState extends State<Calculator> {
         if(equation==''){
           equation = "0";
         }
-      } else if(btnVal == 'AC'){
-        equation = "0";
-        result = "0";
       } 
       else if(btnVal == '='){
         expression = equation;
@@ -103,13 +100,7 @@ class _CalculatorState extends State<Calculator> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly ,
               children: [
                
-              /* CalculatorButton(
-                 text: 'AC', 
-                 fillColor: col,
-                 textColor: 0xFF000000,
-                 textSize: 18,
-                 callback: btnOnClick,
-                 ),*/
+              
                  CalculatorButton(
                  text: 'C', 
                  fillColor: col1,
@@ -117,13 +108,7 @@ class _CalculatorState extends State<Calculator> {
                  textSize: 24,
                  callback: btnOnClick,
                  ),
-                /* CalculatorButton(
-                 text: '<', 
-                 fillColor: col1,
-                 textColor: 0xFF000000,
-                 textSize: 24,
-                 callback: btnOnClick,
-                 ),*/
+               
                   CalculatorButton(
                  text: '/', 
                  fillColor: col1,
@@ -270,13 +255,7 @@ class _CalculatorState extends State<Calculator> {
                  ),
               
               
-                /* CalculatorButton(
-                 text: '00', 
-                 fillColor: col,
-                 textColor: 0xFF000000,
-                 textSize: 22,
-                 callback: btnOnClick,
-                 ),*/
+                
                  
               ],
             ),
