@@ -23,13 +23,7 @@ class _CalculatorState extends State<Calculator> {
     print(btnVal);
     
     setState(() {
-      if(btnVal == 'C'){
-        equation = equation.substring(0,equation.length - 1);
-        if(equation==''){
-          equation = "0";
-        }
-      } 
-      else if(btnVal == '='){
+       if(btnVal == '='){
         expression = equation;
         expression = expression.replaceAll('X', '*');
         try {
@@ -72,18 +66,38 @@ class _CalculatorState extends State<Calculator> {
         child:Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-             Container(
-                  child: 
-                  Padding(padding: EdgeInsets.only(right: 12),
-                  child: Text(
-                    equation,
-                  style: rubik.copyWith(
-                    fontSize: 28,
-                    color: AppColors.calculColor
-                  ),),
-                  ),
-                  alignment: Alignment(1.0 , 1.0),
-                ),
+            
+             Row(
+               mainAxisAlignment: MainAxisAlignment.end ,
+               children: [
+                 
+                
+                 Container(
+                      child: 
+                      Padding(padding: EdgeInsets.only(right: 12),
+                      child: Text(
+                        equation,
+                      style: rubik.copyWith(
+                        fontSize: 28,
+                        color: AppColors.calculColor
+                      ),),
+                      ),
+                      alignment: Alignment(1.0 , 1.0),
+                    ),
+                     IconButton(
+              onPressed: (){
+                setState(() {
+                   equation = equation.substring(0,equation.length - 1);
+        if(equation==''){
+          equation = "0";
+        }
+                });
+              }, 
+              iconSize: 28,
+              color: AppColors.result,
+              icon: Icon(Icons.backspace)),
+               ],
+             ),
                 Container(
                   child: 
                   Padding(padding: EdgeInsets.all(12),
@@ -96,52 +110,9 @@ class _CalculatorState extends State<Calculator> {
                   ),
                   alignment: Alignment(1.0 , 1.0),
                 ),
+           
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly ,
-              children: [
-               
-              
-                 CalculatorButton(
-                 text: 'C', 
-                 fillColor: col1,
-                 textColor: 0xFF000000,
-                 textSize: 24,
-                 callback: btnOnClick,
-                 ),
-               
-                  CalculatorButton(
-                 text: '/', 
-                 fillColor: col1,
-                 textColor: 0xFF000000,
-                 textSize: 24,
-                 callback: btnOnClick,
-                 ),
-                  CalculatorButton(
-                 text: 'X', 
-                 fillColor: col1,
-                 textColor: 0xFF000000,
-                 textSize: 24,
-                 callback: btnOnClick,
-                 ),
-                  CalculatorButton(
-                 text: '-', 
-                 fillColor: col1,
-                 textColor: 0xFF000000,
-                 textSize: 24,
-                 callback: btnOnClick,
-                 ),
-                 CalculatorButton(
-                 text: '+', 
-                 fillColor: col1,
-                 textColor: 0xFF000000,
-                 textSize: 24,
-                 callback: btnOnClick,
-                 ),
-              
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly ,
+              mainAxisAlignment: MainAxisAlignment.center ,
               children: [
                CalculatorButton(
                  text: '9', 
@@ -149,6 +120,7 @@ class _CalculatorState extends State<Calculator> {
                  textColor: 0xFF000000,
                  textSize: 24,
                  callback: btnOnClick,
+                 width: 30,
                  ),
                  CalculatorButton(
                  text: '8', 
@@ -156,6 +128,7 @@ class _CalculatorState extends State<Calculator> {
                  textColor: 0xFF000000,
                  textSize: 24,
                  callback: btnOnClick,
+                 width: 30,
                  ),
                  CalculatorButton(
                  text: '7', 
@@ -163,15 +136,23 @@ class _CalculatorState extends State<Calculator> {
                  textColor: 0xFF000000,
                  textSize: 24,
                  callback: btnOnClick,
+                 width: 30,
                  ),
-                
+                 CalculatorButton(
+                 text: '/', 
+                 fillColor: col1,
+                 textColor: 0xFF000000,
+                 textSize: 24,
+                 callback: btnOnClick,
+                 width: 30,
+                 ),
                  
               
               ],
             ),
 
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly ,
+              mainAxisAlignment: MainAxisAlignment.center ,
               children: [
                CalculatorButton(
                  text: '6', 
@@ -179,6 +160,7 @@ class _CalculatorState extends State<Calculator> {
                  textColor: 0xFF000000,
                  textSize: 24,
                  callback: btnOnClick,
+                 width: 30,
                  ),
                  CalculatorButton(
                  text: '5', 
@@ -186,6 +168,7 @@ class _CalculatorState extends State<Calculator> {
                  textColor: 0xFF000000,
                  textSize: 24,
                  callback: btnOnClick,
+                 width: 30,
                  ),
                  CalculatorButton(
                  text: '4', 
@@ -193,15 +176,23 @@ class _CalculatorState extends State<Calculator> {
                  textColor: 0xFF000000,
                  textSize: 24,
                  callback: btnOnClick,
+                 width: 30,
                  ),
-                 
+                  CalculatorButton(
+                 text: 'X', 
+                 fillColor: col1,
+                 textColor: 0xFF000000,
+                 textSize: 24,
+                 callback: btnOnClick,
+                 width: 30,
+                 ),
                   
               
               ],
             ),
 
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly ,
+              mainAxisAlignment: MainAxisAlignment.center ,
               children: [
                CalculatorButton(
                  text: '3', 
@@ -209,6 +200,7 @@ class _CalculatorState extends State<Calculator> {
                  textColor: 0xFF000000,
                  textSize: 24,
                  callback: btnOnClick,
+                 width: 30,
                  ),
                  CalculatorButton(
                  text: '2', 
@@ -216,6 +208,7 @@ class _CalculatorState extends State<Calculator> {
                  textColor: 0xFF000000,
                  textSize: 24,
                  callback: btnOnClick,
+                 width: 30,
                  ),
                  CalculatorButton(
                  text: '1', 
@@ -223,38 +216,58 @@ class _CalculatorState extends State<Calculator> {
                  textColor: 0xFF000000,
                  textSize: 24,
                  callback: btnOnClick,
+                 width: 30,
                  ),
-                  
-                  
+                 CalculatorButton(
+                 text: '-', 
+                 fillColor: col1,
+                 textColor: 0xFF000000,
+                 textSize: 24,
+                 callback: btnOnClick,
+                 width: 30,
+                 ),
+                
               
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly ,
+              mainAxisAlignment: MainAxisAlignment.center ,
               children: [
-                 CalculatorButton(
-                 text: '.', 
-                 fillColor: col1,
-                 textColor: 0xFF000000,
-                 textSize: 20,
-                 callback: btnOnClick,
-                 ),
                  CalculatorButton(
                  text: '0', 
                  fillColor: col,
                  textColor: 0xFF000000,
                  textSize: 24,
                  callback: btnOnClick,
+                 width: 30,
                  ),
+                 CalculatorButton(
+                 text: '.', 
+                 fillColor: col1,
+                 textColor: 0xFF000000,
+                 textSize: 24,
+                 callback: btnOnClick,
+                 width: 30,
+                 ),
+                
                  CalculatorButton(
                  text: '=', 
                  fillColor: col1,
                  textColor: 0xFF000000,
                  textSize: 24,
                  callback: btnOnClick,
+                 width: 30,
                  ),
               
-              
+               CalculatorButton(
+                 text: '+', 
+                 fillColor: col1,
+                 textColor: 0xFF000000,
+                 textSize: 24,
+                 callback: btnOnClick,
+                 width: 30,
+                 ),  
+                  
                 
                  
               ],

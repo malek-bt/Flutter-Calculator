@@ -8,13 +8,15 @@ class CalculatorButton extends StatelessWidget {
   final int textColor;
   final double textSize;
   final Function callback;
+  final double width ;
   const CalculatorButton({ 
     
     required this.text ,
     required this.fillColor,
     required this.textColor,
     required this.textSize,
-    required this.callback
+    required this.callback ,
+    required this.width
     
     }) ;
 
@@ -27,7 +29,7 @@ class CalculatorButton extends StatelessWidget {
                             onTap: () => callback(text),
                             borderRadius: BorderRadius.circular(10.0),
                             child: Ink(
-                              padding: const EdgeInsets.symmetric(horizontal: 23.0 , vertical: 23.0),
+                              padding:  EdgeInsets.symmetric(horizontal: width , vertical: 23.0),
                               decoration: BoxDecoration(
                                 borderRadius:BorderRadius.circular(10.0),
                                 color: Color(fillColor),
